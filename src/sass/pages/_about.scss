@@ -1,0 +1,84 @@
+// About page styles
+.about-content {
+  padding: spacing(8) 0;
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: spacing(8);
+    
+    @include respond-to(lg) {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  
+  .about-text {
+    h2 {
+      margin-bottom: spacing(4);
+    }
+    
+    p {
+      color: color(neutral, 600);
+      font-size: 1.125rem;
+      line-height: 1.7;
+      
+      &:not(:last-child) {
+        margin-bottom: spacing(4);
+      }
+    }
+  }
+  
+  .about-image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-lg;
+    }
+  }
+}
+
+.team {
+  padding: spacing(8) 0;
+  background-color: color(neutral, 50);
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: spacing(8);
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: spacing(6);
+  }
+  
+  .team-member {
+    text-align: center;
+    
+    .team-member-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto spacing(4);
+      object-fit: cover;
+      box-shadow: $shadow-md;
+      transition: $transition-base;
+      
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: $shadow-lg;
+      }
+    }
+    
+    h3 {
+      margin-bottom: spacing(2);
+    }
+    
+    .team-member-role {
+      color: color(neutral, 600);
+      font-size: 1.125rem;
+    }
+  }
+}

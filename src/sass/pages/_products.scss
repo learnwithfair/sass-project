@@ -1,0 +1,64 @@
+// Products page styles
+.products {
+  padding: spacing(8) 0;
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: spacing(6);
+  }
+  
+  .product-card {
+    background: white;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+    transition: $transition-base;
+    
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: $shadow-lg;
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: $transition-base;
+        
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    
+    .product-content {
+      padding: spacing(5);
+      
+      h3 {
+        margin-bottom: spacing(2);
+      }
+      
+      .product-description {
+        color: color(neutral, 600);
+        margin-bottom: spacing(3);
+      }
+      
+      .product-price {
+        font-size: 1.5rem;
+        font-weight: $font-weight-bold;
+        color: color(primary, 600);
+        margin-bottom: spacing(4);
+      }
+      
+      .button {
+        width: 100%;
+      }
+    }
+  }
+}

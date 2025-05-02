@@ -1,0 +1,19 @@
+// Page header component styles
+.page-header {
+  padding: spacing(8) 0;
+  background: linear-gradient(135deg, color(primary, 50), color(primary, 100));
+  text-align: center;
+  
+  .page-title {
+    @include heading-1;
+    margin-bottom: spacing(3);
+    color: color(primary, 900);
+  }
+  
+  .page-description {
+    font-size: 1.25rem;
+    color: color(neutral, 600);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}

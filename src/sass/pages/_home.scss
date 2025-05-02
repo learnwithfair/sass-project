@@ -1,0 +1,215 @@
+// Hero section
+.hero {
+  padding: spacing(10) 0;
+  position: relative;
+  overflow: hidden;
+  
+  .container {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: spacing(8);
+    
+    @include respond-to(lg) {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  
+  .hero-content {
+    @include slide-up($duration: 0.8s);
+    z-index: z-index(base);
+    
+    .hero-title {
+      @include heading-1;
+      margin-bottom: spacing(3);
+      background: linear-gradient(120deg, color(primary, 600), color(secondary, 600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: color(neutral, 600);
+      margin-bottom: spacing(6);
+      max-width: 540px;
+    }
+    
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: spacing(3);
+    }
+  }
+  
+  .hero-image {
+    position: relative;
+    height: 360px;
+    @include slide-up($duration: 0.8s, $delay: 0.2s);
+    
+    @include respond-to(md) {
+      height: 420px;
+    }
+    
+    .shape {
+      position: absolute;
+      border-radius: $border-radius-lg;
+      
+      &.shape-1 {
+        width: 240px;
+        height: 240px;
+        background: linear-gradient(135deg, color(primary, 500), color(primary, 700));
+        bottom: 0;
+        right: 20%;
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      &.shape-2 {
+        width: 180px;
+        height: 180px;
+        background: linear-gradient(135deg, color(secondary, 500), color(secondary, 700));
+        top: 10%;
+        right: 10%;
+        animation: float 8s ease-in-out infinite;
+        animation-delay: 1s;
+      }
+      
+      &.shape-3 {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, color(accent, 500), color(accent, 700));
+        top: 25%;
+        right: 45%;
+        animation: float 7s ease-in-out infinite;
+        animation-delay: 2s;
+      }
+    }
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0) rotate(0);
+    }
+    50% {
+      transform: translateY(-20px) rotate(4deg);
+    }
+    100% {
+      transform: translateY(0) rotate(0);
+    }
+  }
+}
+
+// Features section
+.features {
+  padding: spacing(10) 0;
+  background-color: color(neutral, 50);
+  
+  .container {
+    @include container;
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: spacing(8);
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, color(primary, 600), color(secondary, 600));
+      border-radius: $border-radius-full;
+    }
+  }
+  
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: spacing(6);
+    
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .feature-card {
+    background-color: white;
+    padding: spacing(5);
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-md;
+    transition: $transition-slow;
+    
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: $shadow-lg;
+      
+      .feature-icon {
+        background-color: color(primary, 600);
+        color: white;
+        transform: scale(1.1);
+      }
+    }
+    
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background-color: color(primary, 100);
+      color: color(primary, 600);
+      border-radius: $border-radius-md;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: spacing(3);
+      transition: $transition-base;
+    }
+    
+    .feature-title {
+      font-size: 1.25rem;
+      margin-bottom: spacing(2);
+    }
+    
+    .feature-description {
+      color: color(neutral, 600);
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+  }
+}
+
+// CTA section
+.cta {
+  padding: spacing(10) 0;
+  background: linear-gradient(135deg, color(primary, 700), color(primary, 900));
+  color: white;
+  
+  .container {
+    @include container;
+  }
+  
+  .cta-content {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    
+    .cta-title {
+      color: white;
+      margin-bottom: spacing(3);
+    }
+    
+    .cta-text {
+      color: color(neutral, 200);
+      font-size: 1.125rem;
+      margin-bottom: spacing(6);
+    }
+  }
+}

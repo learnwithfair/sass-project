@@ -1,0 +1,91 @@
+// Contact page styles
+.contact {
+  padding: spacing(8) 0;
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: spacing(8);
+    
+    @include respond-to(lg) {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+  
+  .contact-info {
+    h2 {
+      margin-bottom: spacing(4);
+    }
+    
+    > p {
+      color: color(neutral, 600);
+      font-size: 1.125rem;
+      margin-bottom: spacing(6);
+    }
+    
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: spacing(5);
+    }
+    
+    .contact-item {
+      h3 {
+        font-size: 1.125rem;
+        margin-bottom: spacing(2);
+      }
+      
+      p {
+        color: color(neutral, 600);
+        line-height: 1.6;
+      }
+    }
+  }
+  
+  .contact-form {
+    background: white;
+    padding: spacing(6);
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-md;
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: spacing(4);
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: spacing(2);
+      
+      label {
+        font-weight: $font-weight-bold;
+        color: color(neutral, 800);
+      }
+      
+      input,
+      textarea {
+        padding: spacing(3);
+        border: 1px solid color(neutral, 200);
+        border-radius: $border-radius-md;
+        transition: $transition-base;
+        
+        &:focus {
+          outline: none;
+          border-color: color(primary, 400);
+          box-shadow: 0 0 0 3px color(primary, 100);
+        }
+      }
+      
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+    }
+    
+    button {
+      margin-top: spacing(2);
+    }
+  }
+}

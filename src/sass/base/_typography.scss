@@ -1,0 +1,89 @@
+h1 {
+  @include heading-1;
+  margin-bottom: spacing(4);
+  color: color(neutral, 900);
+}
+
+h2 {
+  @include heading-2;
+  margin-bottom: spacing(4);
+  color: color(neutral, 900);
+}
+
+h3 {
+  @include heading-3;
+  margin-bottom: spacing(3);
+  color: color(neutral, 900);
+}
+
+h4 {
+  @include heading-4;
+  margin-bottom: spacing(2);
+  color: color(neutral, 900);
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+.font-light {
+  font-weight: $font-weight-light;
+}
+
+.font-normal {
+  font-weight: $font-weight-regular;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-truncate {
+  @include truncate;
+}
+
+.text-truncate-2 {
+  @include truncate(2);
+}
+
+.text-truncate-3 {
+  @include truncate(3);
+}

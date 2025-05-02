@@ -1,0 +1,173 @@
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint: #{$breakpoint}. Available breakpoints are: #{map-keys($breakpoints)}";
+  }
+}
+
+// Get color from our color system
+@function color($color-name, $shade: 500) {
+  @if map-has-key($colors, $color-name) {
+    $color-map: map-get($colors, $color-name);
+    @if map-has-key($color-map, $shade) {
+      @return map-get($color-map, $shade);
+    } @else {
+      @error "Unknown shade: #{$shade} for color #{$color-name}";
+    }
+  } @else {
+    @error "Unknown color: #{$color-name}";
+  }
+}
+
+// Flexbox helpers
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+// Text truncation
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// Focus ring
+@mixin focus-ring($color: primary, $shade: 400, $offset: 2px) {
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 $offset color($color, $shade);
+  }
+}
+
+// Accessibility - hide visually but make available for screen readers
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Responsive container
+@mixin container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $container-padding;
+  padding-left: $container-padding;
+  max-width: $container-max-width;
+}
+
+// Button styles
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: $font-weight-bold;
+  border-radius: $border-radius-md;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: $transition-base;
+  text-decoration: none;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  font-family: $font-family-base;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  @include focus-ring;
+}
+
+// Typography mixins
+@mixin heading-1 {
+  font-size: 2.5rem;
+  line-height: $line-height-heading;
+  font-weight: $font-weight-bold;
+  
+  @include respond-to(md) {
+    font-size: 3.2rem;
+  }
+}
+
+@mixin heading-2 {
+  font-size: 2rem;
+  line-height: $line-height-heading;
+  font-weight: $font-weight-bold;
+  
+  @include respond-to(md) {
+    font-size: 2.5rem;
+  }
+}
+
+@mixin heading-3 {
+  font-size: 1.5rem;
+  line-height: $line-height-heading;
+  font-weight: $font-weight-bold;
+  
+  @include respond-to(md) {
+    font-size: 1.75rem;
+  }
+}
+
+@mixin heading-4 {
+  font-size: 1.25rem;
+  line-height: $line-height-heading;
+  font-weight: $font-weight-bold;
+  
+  @include respond-to(md) {
+    font-size: 1.5rem;
+  }
+}
+
+// Animations
+@mixin fade-in($duration: 0.3s, $delay: 0s) {
+  animation: fadeIn $duration ease-in-out forwards;
+  animation-delay: $delay;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin slide-up($duration: 0.3s, $delay: 0s, $distance: 20px) {
+  animation: slideUp $duration ease-out forwards;
+  animation-delay: $delay;
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY($distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

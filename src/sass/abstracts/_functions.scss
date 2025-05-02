@@ -1,0 +1,41 @@
+// Get spacing values from spacing map
+@function spacing($key) {
+  @if map-has-key($spacing, $key) {
+    @return map-get($spacing, $key);
+  }
+  
+  @error "Spacing `#{$key}` not found. Available spacings are: #{map-keys($spacing)}.";
+}
+
+// Get z-index values from z-index map
+@function z-index($key) {
+  @if map-has-key($z-index, $key) {
+    @return map-get($z-index, $key);
+  }
+  
+  @error "Z-index `#{$key}` not found. Available z-indices are: #{map-keys($z-index)}.";
+}
+
+// Convert px to rem
+@function rem($pixels, $context: 16) {
+  @return calc($pixels / $context) * 1rem;
+}
+
+// Lighten color by percentage
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// Darken color by percentage
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// Determine text color based on background color
+@function text-color-for-bg($background-color) {
+  @if (lightness($background-color) > 60) {
+    @return #212121; // Dark text for light backgrounds
+  } @else {
+    @return #ffffff; // Light text for dark backgrounds
+  }
+}

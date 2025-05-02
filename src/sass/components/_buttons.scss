@@ -1,0 +1,106 @@
+.button {
+  @include button-base;
+  
+  // Size variants
+  &.button-small {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  &.button-large {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+  }
+  
+  // Variant: Primary
+  &.button-primary {
+    background-color: color(primary, 600);
+    color: white;
+    
+    &:hover {
+      background-color: color(primary, 700);
+    }
+    
+    &:active {
+      background-color: color(primary, 800);
+    }
+    
+    &:disabled {
+      background-color: color(neutral, 300);
+      color: color(neutral, 500);
+      cursor: not-allowed;
+    }
+  }
+  
+  // Variant: Secondary
+  &.button-secondary {
+    background-color: transparent;
+    color: color(primary, 600);
+    border: 1px solid color(primary, 600);
+    
+    &:hover {
+      background-color: color(primary, 50);
+      border-color: color(primary, 700);
+      color: color(primary, 700);
+    }
+    
+    &:active {
+      background-color: color(primary, 100);
+      border-color: color(primary, 800);
+      color: color(primary, 800);
+    }
+    
+    &:disabled {
+      border-color: color(neutral, 300);
+      color: color(neutral, 400);
+      cursor: not-allowed;
+    }
+  }
+  
+  // Variant: Text
+  &.button-text {
+    background-color: transparent;
+    color: color(primary, 600);
+    padding: 0.25rem 0.5rem;
+    
+    &:hover {
+      background-color: color(primary, 50);
+      color: color(primary, 700);
+    }
+    
+    &:active {
+      background-color: color(primary, 100);
+      color: color(primary, 800);
+    }
+    
+    &:disabled {
+      color: color(neutral, 400);
+      cursor: not-allowed;
+    }
+  }
+  
+  // Icon button
+  &.button-icon {
+    padding: 0.5rem;
+    border-radius: $border-radius-full;
+    
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+  
+  // Full width
+  &.button-full {
+    width: 100%;
+  }
+  
+  // Button with icon
+  .button-icon-start {
+    margin-right: 0.5rem;
+  }
+  
+  .button-icon-end {
+    margin-left: 0.5rem;
+  }
+}

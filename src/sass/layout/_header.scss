@@ -1,0 +1,137 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: $shadow-sm;
+  z-index: z-index(sticky);
+  padding: spacing(4) 0;
+  transition: $transition-base;
+  
+  &.scrolled {
+    padding: spacing(2) 0;
+    box-shadow: $shadow-md;
+  }
+  
+  .container {
+    @include container;
+  }
+  
+  .nav {
+    @include flex(row, space-between, center);
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: $font-weight-bold;
+      color: color(primary, 600);
+      transition: $transition-base;
+      
+      &:hover {
+        color: color(primary, 700);
+      }
+    }
+    
+    .nav-links {
+      @include flex(row, flex-end, center);
+      gap: spacing(4);
+      display: none;
+      
+      @include respond-to(md) {
+        display: flex;
+      }
+      
+      .nav-link {
+        position: relative;
+        color: color(neutral, 700);
+        font-weight: $font-weight-regular;
+        transition: $transition-base;
+        padding: spacing(1) 0;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: color(primary, 600);
+          transition: $transition-base;
+        }
+        
+        &:hover {
+          color: color(primary, 600);
+          
+          &::after {
+            width: 100%;
+          }
+        }
+        
+        &.active {
+          color: color(primary, 600);
+          font-weight: $font-weight-bold;
+          
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+    
+    .menu-toggle {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      @include respond-to(md) {
+        display: none;
+      }
+      
+      span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: color(neutral, 800);
+        border-radius: 9999px;
+        transition: $transition-base;
+        transform-origin: center;
+        
+        &:nth-child(1) {
+          transform: translateY(0) rotate(0);
+        }
+        
+        &:nth-child(2) {
+          opacity: 1;
+        }
+        
+        &:nth-child(3) {
+          transform: translateY(0) rotate(0);
+        }
+      }
+      
+      &.active {
+        span {
+          &:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+          }
+          
+          &:nth-child(2) {
+            opacity: 0;
+          }
+          
+          &:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+}
